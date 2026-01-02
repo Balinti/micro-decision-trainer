@@ -1,9 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    serverActions: true,
-  },
-};
+const nextConfig = {};
 
 // Injected content via Sentry wizard below
 const { withSentryConfig } = require("@sentry/nextjs");
