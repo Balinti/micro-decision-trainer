@@ -65,16 +65,19 @@ export function PricingTable({
     }
   };
 
+  const monthlyPriceId = process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID;
+  const annualPriceId = process.env.NEXT_PUBLIC_STRIPE_PRO_ANNUAL_PRICE_ID;
+  const isPricingConfigured = Boolean(monthlyPriceId && annualPriceId);
+
   const handleProPlan = () => {
+    if (!isPricingConfigured) return;
+
     if (!isLoggedIn) {
       window.location.href = "/signup?plan=pro";
       return;
     }
 
-    const priceId =
-      billingPeriod === "annual"
-        ? process.env.NEXT_PUBLIC_STRIPE_PRO_ANNUAL_PRICE_ID
-        : process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID;
+    const priceId = billingPeriod === "annual" ? annualPriceId : monthlyPriceId;
 
     if (onCheckout && priceId) {
       onCheckout(priceId);
@@ -183,9 +186,9 @@ export function PricingTable({
             <Button
               className="w-full mb-6"
               onClick={handleProPlan}
-              disabled={isLoading}
+              disabled={isLoading || !isPricingConfigured}
             >
-              {isLoading ? "Loading..." : "Upgrade to Pro"}
+              {isLoading ? "Loading..." : !isPricingConfigured ? "Coming Soon" : "Upgrade to Pro"}
             </Button>
             <ul className="space-y-3">
               {plans.pro.features.map((feature, index) => (

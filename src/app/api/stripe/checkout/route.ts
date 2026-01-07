@@ -57,10 +57,12 @@ export async function POST(request: NextRequest) {
       subscription_data: {
         metadata: {
           supabase_user_id: user.id,
+          app_name: "micro-decision-trainer",
         },
       },
       metadata: {
         supabase_user_id: user.id,
+        app_name: "micro-decision-trainer",
       },
     });
 
