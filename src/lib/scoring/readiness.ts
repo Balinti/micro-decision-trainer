@@ -56,9 +56,9 @@ export function calculateReadinessScore(
 
   // Risk penalty: each risk encountered reduces score
   let riskPenalty = 0;
-  for (const [, { count }] of risksEncountered) {
+  Array.from(risksEncountered.values()).forEach(({ count }) => {
     riskPenalty += count * 5;
-  }
+  });
 
   // Consistency bonus: if no major risks and good choices
   const consistencyBonus =
