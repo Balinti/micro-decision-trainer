@@ -22,10 +22,10 @@ export default function HomePage() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-4">
               <Link
-                href="/signup"
+                href="/try"
                 className="rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-primary/90 transition-colors"
               >
-                Start Free Practice
+                Try Free Demo
                 <ArrowRight className="inline-block ml-2 h-5 w-5" />
               </Link>
               <Link
@@ -36,7 +36,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="mt-4 text-sm text-gray-500">
-              No credit card required. One free scenario every week.
+              No signup required. Try it now in 3 minutes.
             </p>
           </div>
         </section>
@@ -142,10 +142,10 @@ export default function HomePage() {
               Your next raise conversation could be worth thousands. Prepare in minutes.
             </p>
             <Link
-              href="/signup"
+              href="/try"
               className="rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-primary/90 transition-colors inline-flex items-center"
             >
-              Start Free Practice
+              Try Free Demo
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>

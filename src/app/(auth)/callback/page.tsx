@@ -23,6 +23,13 @@ function CallbackContent() {
       }
 
       if (data.session) {
+        // If redirecting to try-convert, skip onboarding check
+        // (trial conversion will handle sending them to the right place)
+        if (redirect === "/try-convert") {
+          router.push(redirect);
+          return;
+        }
+
         // Check if user has completed onboarding
         const { data: profile } = await supabase
           .from("profiles")
