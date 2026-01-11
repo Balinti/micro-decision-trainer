@@ -34,17 +34,17 @@ export default function TryPage() {
 
   useEffect(() => {
     const checkAuthAndLoadTrial = async () => {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-
-      // If user is already logged in, redirect to library
-      if (user) {
-        router.push("/library");
-        return;
-      }
-
-      // Fetch trial scenario
       try {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+
+        // If user is already logged in, redirect to library
+        if (user) {
+          router.push("/library");
+          return;
+        }
+
+        // Fetch trial scenario
         const response = await fetch("/api/trial/scenario");
         if (!response.ok) {
           const data = await response.json();
